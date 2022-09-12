@@ -34,5 +34,3 @@ const kivon=(a,b,c)=>a-b-c;
 console.log(mindentosszead(10,10,20,35));
 console.log(mindentosszead(100,10,200,35,68,482,551));
 
-
-
