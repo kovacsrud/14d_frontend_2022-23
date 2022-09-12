@@ -26,6 +26,17 @@ let kia={
 console.log(kia.marka);
 console.log(kia.markaEsTipus());
 
+//objektumok,tömbök destruktúrálása
+const {marka:Marka,tipus:Tipus}=kia;
+
+console.log("Des:"+Marka);
+console.log("Des:"+Tipus);
+
+
+
+
+
+
 let marka="VolksWagen";
 let tipus="Passat";
 let gyartasiEv=2011;

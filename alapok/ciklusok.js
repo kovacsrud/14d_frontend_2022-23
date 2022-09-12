@@ -1,5 +1,12 @@
 let szamok=[12,26,78,967,1022,516];
 
+const [elso,masodik,...rest]=szamok;
+
+console.log("Tömb:"+elso);
+console.log("Tömb:"+masodik);
+//... ->spread operátor
+console.log(...rest);
+
 let szemely={
     vezeteknev:"Kiss",
     keresztnev:"Ubul",
