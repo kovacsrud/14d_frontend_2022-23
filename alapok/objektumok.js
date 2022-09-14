@@ -66,8 +66,26 @@ let nevek=
 
     ]
 
+let ujnev={
+    vezeteknev:"Zakál",
+    keresztnev:"Egon"
+}
 
-console.log(opel);
-console.log(kia);
-console.log(VolksWagen);
+ujnev={...ujnev,kor:36};
+
+nevek=[...nevek,ujnev];
+
 console.log(nevek);
+console.log(ujnev);
+
+delete ujnev.kor;
+console.log(ujnev);
+
+nevek=nevek.filter(x=>x.vezeteknev!="Kiss");
+
+console.log(nevek);
+
+//console.log(opel);
+//console.log(kia);
+//console.log(VolksWagen);
+//console.log(nevek);
