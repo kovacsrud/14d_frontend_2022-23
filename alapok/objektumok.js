@@ -67,23 +67,32 @@ let nevek=
     ]
 
 let ujnev={
-    vezeteknev:"Zakál",
-    keresztnev:"Egon"
-}
+    vezeteknev:"Tóth",
+    keresztnev:"Géza",
+}    
 
 ujnev={...ujnev,kor:36};
+
+console.log(ujnev);
+
+delete ujnev.kor;
+
+console.log(ujnev);
 
 nevek=[...nevek,ujnev];
 
 console.log(nevek);
-console.log(ujnev);
 
-delete ujnev.kor;
-console.log(ujnev);
+//nevek=nevek.filter(x=>x.vezeteknev!="Tóth");
 
-nevek=nevek.filter(x=>x.vezeteknev!="Kiss");
+let index=nevek.findIndex(x=>x.vezeteknev=="Tóth");
+
+nevek.splice(index,1);
+
 
 console.log(nevek);
+
+//console.log(index);
 
 //console.log(opel);
 //console.log(kia);
