@@ -1,0 +1,18 @@
+.negyzet {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    background-color: brown;
+}
+
+#main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#selected {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-color: blue;
+}

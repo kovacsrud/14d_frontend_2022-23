@@ -84,10 +84,15 @@ nevek=[...nevek,ujnev];
 console.log(nevek);
 
 //nevek=nevek.filter(x=>x.vezeteknev!="Tóth");
+let egynev=nevek.find(x=>x.vezeteknev=="Tóth");
 
-let index=nevek.findIndex(x=>x.vezeteknev=="Tóth");
+egynev.keresztnev="Ubul Elek";
 
-nevek.splice(index,1);
+console.log(egynev);
+
+//let index=nevek.findIndex(x=>x.vezeteknev=="Tóth");
+
+//nevek.splice(index,1);
 
 
 console.log(nevek);
