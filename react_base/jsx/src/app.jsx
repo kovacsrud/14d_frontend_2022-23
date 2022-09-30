@@ -1,22 +1,35 @@
 function App(){
     
-    const nev="Egon";
+    
 
     return (
         <div>
-            <Header szoveg={"Jsx használata"} masikszoveg={"Jsx szintaktika használata"} />
-            <h2>Üdvözöllek:{nev}</h2>
+            <h1>Üdvözöllek</h1>
+            <Box hatterszin={"red"} kezdo={10} />
+            <Box hatterszin={"blue"} kezdo={20} />
+            <Box hatterszin={"yellow"} kezdo={30} />
+          
         </div>
     );
 }
 
-function Header(props){
+function Box({hatterszin,kezdo}){
+
+    const[szamlalo,setSzamlalo]=React.useState(kezdo);
+
     return (
-        <div className="border">
-        <h1 className="p-2 m-5">{props.szoveg}</h1>
-        <h3 className="p-2 m-2">{props.masikszoveg}</h3>
+        <div className="p-2 m-5 rounded" style={{width:"200px",height:"200px",backgroundColor:hatterszin}}>
+            <div  onClick={()=>setSzamlalo(prev=>prev+1)} >
+                <h1>{szamlalo}</h1>
+             </div>
+           <div>
+               <button onClick={()=>setSzamlalo(0)}>Reset</button>
+            </div>
         </div>
     );
 }
+
+
+
 
 ReactDOM.render(React.createElement(App),document.getElementById('app'));

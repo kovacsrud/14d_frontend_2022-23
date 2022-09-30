@@ -1,33 +1,56 @@
-function App() {
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-    var nev = "Egon";
+function App() {
 
     return React.createElement(
         "div",
         null,
-        React.createElement(Header, { szoveg: "Jsx használata", masikszoveg: "Jsx szintaktika használata" }),
         React.createElement(
-            "h2",
+            "h1",
             null,
-            "\xDCdv\xF6z\xF6llek:",
-            nev
-        )
+            "\xDCdv\xF6z\xF6llek"
+        ),
+        React.createElement(Box, { hatterszin: "red", kezdo: 10 }),
+        React.createElement(Box, { hatterszin: "blue", kezdo: 20 }),
+        React.createElement(Box, { hatterszin: "yellow", kezdo: 30 })
     );
 }
 
-function Header(props) {
+function Box(_ref) {
+    var hatterszin = _ref.hatterszin,
+        kezdo = _ref.kezdo;
+
+    var _React$useState = React.useState(kezdo),
+        _React$useState2 = _slicedToArray(_React$useState, 2),
+        szamlalo = _React$useState2[0],
+        setSzamlalo = _React$useState2[1];
+
     return React.createElement(
         "div",
-        { className: "border" },
+        { className: "p-2 m-5 rounded", style: { width: "200px", height: "200px", backgroundColor: hatterszin } },
         React.createElement(
-            "h1",
-            { className: "p-2 m-5" },
-            props.szoveg
+            "div",
+            { onClick: function onClick() {
+                    return setSzamlalo(function (prev) {
+                        return prev + 1;
+                    });
+                } },
+            React.createElement(
+                "h1",
+                null,
+                szamlalo
+            )
         ),
         React.createElement(
-            "h3",
-            { className: "p-2 m-2" },
-            props.masikszoveg
+            "div",
+            null,
+            React.createElement(
+                "button",
+                { onClick: function onClick() {
+                        return setSzamlalo(0);
+                    } },
+                "Reset"
+            )
         )
     );
 }
