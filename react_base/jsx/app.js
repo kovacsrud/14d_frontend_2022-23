@@ -11,8 +11,7 @@ function App() {
             "\xDCdv\xF6z\xF6llek"
         ),
         React.createElement(Box, { hatterszin: "red", kezdo: 10 }),
-        React.createElement(Box, { hatterszin: "blue", kezdo: 20 }),
-        React.createElement(Box, { hatterszin: "yellow", kezdo: 30 })
+        React.createElement(Posts, null)
     );
 }
 
@@ -24,6 +23,10 @@ function Box(_ref) {
         _React$useState2 = _slicedToArray(_React$useState, 2),
         szamlalo = _React$useState2[0],
         setSzamlalo = _React$useState2[1];
+
+    React.useEffect(function () {
+        document.title = "Számláló értéke:" + szamlalo;
+    }, [szamlalo]);
 
     return React.createElement(
         "div",
@@ -39,19 +42,60 @@ function Box(_ref) {
                 "h1",
                 null,
                 szamlalo
-            )
-        ),
-        React.createElement(
-            "div",
-            null,
+            ),
             React.createElement(
                 "button",
-                { onClick: function onClick() {
-                        return setSzamlalo(0);
+                { onClick: function onClick(e) {
+                        setSzamlalo(0);
+                        e.stopPropagation();
                     } },
                 "Reset"
             )
         )
+    );
+}
+
+function Posts() {
+    var _React$useState3 = React.useState([]),
+        _React$useState4 = _slicedToArray(_React$useState3, 2),
+        posts = _React$useState4[0],
+        setPosts = _React$useState4[1];
+
+    React.useEffect(function () {
+        fetch('https://jsonplaceholder.typicode.com/posts/').then(function (res) {
+            return res.json();
+        }).then(function (adatok) {
+            return setPosts(adatok);
+        }).catch(function (err) {
+            return console.log(err);
+        });
+    }, []);
+
+    return React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "h2",
+            null,
+            "Adatok sz\xE1ma:",
+            posts.length
+        ),
+        posts.map(function (elem, index) {
+            return React.createElement(
+                "div",
+                { key: index, className: "p-2 m-4", style: { backgroundColor: "green" } },
+                React.createElement(
+                    "p",
+                    null,
+                    elem.title
+                ),
+                React.createElement(
+                    "p",
+                    null,
+                    elem.body
+                )
+            );
+        })
     );
 }
 
