@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import UserList from "./components/UserList";
+import "bootstrap-icons/font/bootstrap-icons.css"
 
 function App() {
   return (

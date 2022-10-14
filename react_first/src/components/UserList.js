@@ -1,7 +1,9 @@
 import {useState,useEffect} from 'react';
-import User from './User';
+//import User from './User';
 import UserSelect from './UserSelect';
 import Spinner from './Spinner';
+import PlainUser from './PlainUser';
+import UserRender from './UserRender';
 
 function UserList() {
 
@@ -40,10 +42,10 @@ function UserList() {
         <h1>Felhasználók ({users.length})</h1>
 
         <UserSelect setDb={setDb} />
-        <div className="d-flex flex-wrap flex-row">
+        <div>
         {
           !loading ? 
-            users.map((elem,index)=>(<User key={index} user={elem} />)) 
+            users.map((elem,index)=>(<UserRender key={index} user={elem} />)) 
            :
            
            <Spinner />

@@ -7,6 +7,8 @@ function User({user}) {
         <div className="card-body">
         <h5 className="card-title">{user.name.first} {user.name.last}</h5>
         <p className="card-text">{user.location.city} {user.location.street.name} {user.location.street.number}</p>
+        <p className="card-text">Age:{user.dob.age}</p>
+        <p className="card-text">Email:{user.email}</p>
     
         </div>
     </div>
