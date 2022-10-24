@@ -23,7 +23,8 @@ function AutoList() {
         {
             autok.map((auto,index)=>(<AutoRender auto={auto} update={update} />))
         }
-        <AutoForm />
+        <h2>Új autó felvitele</h2>
+        <AutoForm update={update} />
 
     </div>
   )

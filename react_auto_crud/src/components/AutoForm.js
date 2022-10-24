@@ -1,23 +1,72 @@
 import {useState} from 'react';
 
-function AutoForm() {
+function AutoForm({auto,update}) {
 
-    const[formData,setFormData]=useState({
-        marka:"",
-        tipus:"",
-        rendszam:"",
-        kor:0
-    });
+    let formObj={};
+    let method="POST";
+    let id="";
+
+    
+    if(auto!=="undefined" && auto!=null){
+        formObj={
+            id:auto.id,
+            marka:auto.marka,
+            tipus:auto.tipus,
+            rendszam:auto.rendszam,
+            kor:auto.kor
+            }
+        method="PATCH";    
+        id=auto.id;
+        } else {
+            formObj={
+                marka:"",
+                tipus:"",
+                rendszam:"",
+                kor:0
+            }
+        }
+    
+
+    const[formData,setFormData]=useState(formObj);
+
+    
 
     const writeData=(e)=>{
         setFormData((prevState)=>({...prevState,[e.target.id]:e.target.value}));
     }
 
+    const sendData=async (data)=>{
+        const response=await fetch(`http://localhost:8000/autok/${id}`,{
+            method:`${method}`,
+            headers:{'Content-type':'application/json'},
+            body:JSON.stringify(data)
+        });
 
-  return (
+        const eredmeny=await response.text();
+        alert(eredmeny);
+        update();
+        
+    }
+
+    const onSubmit=(e)=>{
+        e.preventDefault();
+        sendData(formData);
+        if(method==="POST"){
+            setFormData({
+                marka:"",
+                tipus:"",
+                rendszam:"",
+                kor:""
+            })
+        }
+     
+    }
+
+
+    return (
     <div>
-        <h2>Új autó felvitele</h2>
-        <form>
+        
+        <form onSubmit={onSubmit}>
         <div className="mb-3">
           <label for="marka" className="form-label">Márka</label>
           <input type="text" value={formData.marka} onChange={writeData} className="form-control" id="marka"/>
@@ -34,6 +83,7 @@ function AutoForm() {
 
     </div>
   );
+
 }
 
 export default AutoForm;
