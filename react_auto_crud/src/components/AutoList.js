@@ -5,6 +5,10 @@ function AutoList() {
     const[autok,setAutok]=useState([]);
     const[refresh,setRefresh]=useState(false);
 
+    const update=()=>{
+        setRefresh(prev=>!prev);
+    }
+
     useEffect(()=>{
         fetch('http://localhost:8000/autok')
         .then(res=>res.json())
@@ -16,7 +20,7 @@ function AutoList() {
   return (
     <div>Autó lista
         {
-            autok.length
+            autok.map((auto,index)=>(<AutoRender auto={auto} update={update} />))
         }
     </div>
   )
