@@ -1,5 +1,6 @@
 import AutoRender from "./AutoRender";
 import {useEffect,useState} from 'react';
+import AutoForm from "./AutoForm";
 
 function AutoList() {
     const[autok,setAutok]=useState([]);
@@ -22,6 +23,8 @@ function AutoList() {
         {
             autok.map((auto,index)=>(<AutoRender auto={auto} update={update} />))
         }
+        <AutoForm />
+
     </div>
   )
 }
