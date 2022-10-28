@@ -1,12 +1,12 @@
 import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+
 
 function AutoForm({auto,update}) {
 
     let formObj={};
     let method="POST";
     let id="";
-    const navigate=useNavigate();
+    
 
     
     if(auto!=="undefined" && auto!=null){
@@ -60,7 +60,7 @@ function AutoForm({auto,update}) {
                 rendszam:"",
                 kor:0
             });
-            //navigate('/autolist');
+            
         }
      
     }
