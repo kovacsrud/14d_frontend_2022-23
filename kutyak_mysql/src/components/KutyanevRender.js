@@ -14,13 +14,12 @@ function KutyanevRender({kutyanev,update}) {
      
             !showForm ? (<Kutyanev kutyanev={kutyanev} setShowForm={setShowForm} update={update}/>) 
             :
-             //(<KutyanevForm inputKutyanev={kutyanev} update={update} />)
+             
              <div>
              <Kutyanev kutyanev={kutyanev} setShowForm={setShowForm} update={update}/>
-             
+             <KutyanevForm inputKutyanev={kutyanev} update={update} />          
             
-             
-             <p>Lófasz</p>
+            
              </div>
         
         }

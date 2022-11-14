@@ -18,10 +18,12 @@ function KutyanevLista() {
         .catch(err=>console.log(err));
     },[refresh]);
   return (
-    <div>
+    <div className='flex justify-center items-center'>
+        <div className='flex-column'>
         {
             kutyanevek.map((kutyanev,index)=>(<KutyanevRender key={index} kutyanev={kutyanev} update={update} />))
         }
+        </div>
     </div>
   )
 }

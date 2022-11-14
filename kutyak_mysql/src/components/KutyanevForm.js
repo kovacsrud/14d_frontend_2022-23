@@ -2,11 +2,15 @@ import {useState} from 'react';
 
 function KutyanevForm({inputKutyanev,update}) {
     let method='POST';
+    let cim="Új kutyanév felvitele";
     const[kutyanev,setKutyanev]=useState("");
+    let defaultValue="";
 
     if(inputKutyanev!=="undefined" && inputKutyanev!=null){
-        setKutyanev(inputKutyanev.kutyanev);
+        //setKutyanev(inputKutyanev.kutyanev);
         method='PATCH';
+        cim="Kutyanév módosítása";
+        defaultValue=inputKutyanev.kutyanev;
     }
 
 
@@ -25,7 +29,7 @@ function KutyanevForm({inputKutyanev,update}) {
     }
     const onSubmit=(e)=>{
         e.preventDefault();
-        if(method=='PATCH'){
+        if(method==='PATCH'){
             adatKuldes({"id":inputKutyanev.id,"kutyanev":kutyanev});
             update();
         } else {
@@ -35,9 +39,9 @@ function KutyanevForm({inputKutyanev,update}) {
 
   return (
     <div>
-        <h2>Új kutyanév felvitele</h2>
+        <h2>{cim}</h2>
         <form onSubmit={onSubmit}>
-        <input type="text" placeholder="Új kutyanév" value={kutyanev} onChange={(e)=>setKutyanev(e.target.value)} className="input input-bordered w-full max-w-xs" />
+        <input type="text" placeholder="Kutyanév" defaultValue={defaultValue} onChange={(e)=>setKutyanev(e.target.value)} className="input input-bordered w-full max-w-xs" />
         <button type="submit" className="btn btn-primary">Küldés!</button>
 
         </form>
