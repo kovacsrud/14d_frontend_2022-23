@@ -24,11 +24,22 @@ function Kutyanev({ kutyanev, setShowForm, update }) {
             Módosítás
           </button>
           <button className="btn" onClick={() => torles(kutyanev.id)}>
+         
             Törlés
           </button>
          
+
+         
+
+         
         </div>
+        
+
+        
       </div>
+       
+
+     
     </div>
   );
 }
