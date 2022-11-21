@@ -46,7 +46,7 @@ function KutyaForm() {
             <span className="label-text">A kutya életkora</span>
           </label>
           <input
-            type="text" value={formData.eletkor} onChange={writeData}
+            type="text" required value={formData.eletkor} onChange={writeData}
             className="input input-bordered w-full max-w-xs"
             id="eletkor"
           />
@@ -56,7 +56,7 @@ function KutyaForm() {
             <span className="label-text">Utolsó ellenőrzés dátuma</span>
           </label>
           <input
-            type="text" value={formData.utolsoell} onChange={writeData}
+            type="text" required value={formData.utolsoell} onChange={writeData}
             className="input input-bordered w-full max-w-xs"
             id="utolsoell"
           />
