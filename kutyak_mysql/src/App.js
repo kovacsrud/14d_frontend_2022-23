@@ -5,7 +5,10 @@ import Navbar from './components/Navbar';
 import KutyanevForm from './components/KutyanevForm';
 import KutyafajtaForm from "./components/Kutyafajtak/KutyafajtaForm";
 import { KutyafajtaProvider } from "./components/context/KutyfajtaContext";
+import {KutyaProvider} from "./components/context/KutyaContext";
 import KutyafajtaLista from "./components/Kutyafajtak/KutyafajtaLista";
+import KutyaLista from "./components/Kutyak/KutyaLista";
+import KutyaForm from "./components/Kutyak/KutyaForm";
 
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 
@@ -13,6 +16,7 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 function App() {
   return (
     <div className="text-3xl font-bold">
+      <KutyaProvider>
       <KutyafajtaProvider>
       <Header />
       <Router>
@@ -23,11 +27,15 @@ function App() {
           <Route path='/ujkutyanev' element={<KutyanevForm />}/>
           <Route path='/kutyafajtak' element={<KutyafajtaLista />}/>
           <Route path='/ujkutyafajta' element={<KutyafajtaForm />} />
+          <Route path='/kutyak' element={<KutyaLista />} />
+          <Route path='/ujkutya' element={<KutyaForm />} />
+          
 
         </Routes>
       
       </Router>
       </KutyafajtaProvider>
+      </KutyaProvider>
     </div>
   );
 }
