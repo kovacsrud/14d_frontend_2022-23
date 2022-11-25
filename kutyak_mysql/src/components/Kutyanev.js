@@ -1,6 +1,7 @@
 import ConfirmBox from "react-dialog-confirm";
 import '../../node_modules/react-dialog-confirm/build/index.css';
 import {useState} from 'react';
+import {toast} from 'react-toastify';
 
 function Kutyanev({ kutyanev, setShowForm, update }) {
   const torles = async (id) => {
@@ -13,9 +14,15 @@ function Kutyanev({ kutyanev, setShowForm, update }) {
       }
     );
 
-    const valasz = await response.text();
+    const valasz = await response.json();
     update();
-    alert(valasz);
+    //alert(valasz);
+    if(valasz.message){
+      toast.success(valasz.message,{position: toast.POSITION.BOTTOM_RIGHT});
+    }
+    if(valasz.sqlMessage){
+      toast.error(valasz.sqlMessage,{position: toast.POSITION.BOTTOM_RIGHT});
+    }
   };
 
   const [isOpen,setIsOpen]=useState(false);

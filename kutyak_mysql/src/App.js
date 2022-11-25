@@ -9,6 +9,8 @@ import {KutyaProvider} from "./components/context/KutyaContext";
 import KutyafajtaLista from "./components/Kutyafajtak/KutyafajtaLista";
 import KutyaLista from "./components/Kutyak/KutyaLista";
 import KutyaForm from "./components/Kutyak/KutyaForm";
+import {ToastContainer} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 
@@ -19,7 +21,7 @@ function App() {
       <KutyaProvider>
       <KutyafajtaProvider>
       <Header />
-      <Router>
+      <Router basename="/rendelo">
         <Navbar />
         <Routes>
           <Route path='/' element={<Fooldal />}/>
@@ -36,6 +38,7 @@ function App() {
       </Router>
       </KutyafajtaProvider>
       </KutyaProvider>
+      <ToastContainer />
     </div>
   );
 }

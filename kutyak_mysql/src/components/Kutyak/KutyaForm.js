@@ -1,20 +1,40 @@
 import { useState, useEffect, useContext } from "react";
 import KutyafajtaContext from '../context/KutyfajtaContext';
 import KutyaContext from "../context/KutyaContext";
-import {useNavigate} from 'react-router-dom';
+import {useNavigate,useLocation} from 'react-router-dom';
 
 function KutyaForm() {
   const navigate=useNavigate();
+  const {state}=useLocation();
+  
+
   const {adatKuldes}=useContext(KutyaContext);
   let cim="Új rendelési adat felvitele";
   let method="POST";
+  let formObj={};
 
-  let formObj={
-    nevid:1,
-    fajtaid:1,
-    eletkor:"",
-    utolsoell:""
+  if(state!==null){
+    const {kutya}=state;
+    cim="Rendelési adat módosítása";
+    method="PATCH";
+    formObj={
+      id:kutya.id,
+      nevid:kutya.nevid,
+      fajtaid:kutya.fajtaid,
+      eletkor:kutya.eletkor,
+      utolsoell:kutya.utolsoell
+    }
+
+  } else {
+    formObj={
+      nevid:1,
+      fajtaid:1,
+      eletkor:"",
+      utolsoell:""
+    }
   }
+
+  
   const {kutyafajtak}=useContext(KutyafajtaContext);
   const [kutyanevek,setKutyanevek]=useState([]);
   const [formData,setFormData]=useState(formObj);

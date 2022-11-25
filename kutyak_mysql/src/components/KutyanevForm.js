@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {toast} from 'react-toastify';
 
 function KutyanevForm({inputKutyanev,update}) {
     let method='POST';
@@ -22,9 +23,15 @@ function KutyanevForm({inputKutyanev,update}) {
             body:JSON.stringify(adat)
         });
 
-        const valasz=await response.text();
+        const valasz=await response.json();
         
-        alert(valasz);
+        //alert(valasz);
+        if(valasz.message){
+            toast.success(valasz.message,{position: toast.POSITION.BOTTOM_RIGHT});
+        }
+        if(valasz.sqlMessage){
+            toast.error(valasz.sqlMessage,{position: toast.POSITION.BOTTOM_RIGHT});
+        }
 
     }
     const onSubmit=(e)=>{

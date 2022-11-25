@@ -1,4 +1,5 @@
 import { useState,useEffect,createContext } from "react";
+import {toast} from 'react-toastify';
 
 const KutyaContext=createContext();
 
@@ -24,9 +25,15 @@ export const KutyaProvider=({children})=>{
             body:JSON.stringify(adat)
         });
 
-        const valasz=await response.text();
+        const valasz=await response.json();
         update();
-        alert(valasz);
+        //alert(valasz);
+        if(valasz.message){
+            toast.success(valasz.message,{position: toast.POSITION.BOTTOM_RIGHT});
+        }
+        if(valasz.sqlMessage){
+            toast.error(valasz.sqlMessage,{position: toast.POSITION.BOTTOM_RIGHT});
+        }
 
     }
 
@@ -37,9 +44,15 @@ export const KutyaProvider=({children})=>{
           body:JSON.stringify({id})
         });
   
-        const valasz=await response.text();
+        const valasz=await response.json();
         update();
-        alert(valasz);
+        //alert(valasz);
+        if(valasz.message){
+            toast.success(valasz.message);
+        }
+        if(valasz.sqlMessage){
+            toast.error(valasz.sqlMessage);
+        }
   
     }
 
