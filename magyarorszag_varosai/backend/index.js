@@ -7,6 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
 app.use('/api/telepulesek',require('./routes/telepulesRoutes'));
+app.use('/api/megyek',require('./routes/megyeRoutes'));
 
 app.listen(8000,()=>{console.log("Running")});
 
