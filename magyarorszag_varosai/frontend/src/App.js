@@ -4,6 +4,7 @@ import {BrowserRouter as Router,Routes,Route,Navigate} from 'react-router-dom';
 import Main from './components/Main';
 import Telepules from './components/Telepules';
 import Megye from './components/Megye';
+import MegyeTelepules from './components/MegyeTelepules';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Main />} />
             <Route path='/telepules' element={<Telepules />}/>
+            <Route path='/megyetelepules' element={<MegyeTelepules />} />
             <Route path='/megye' element={<Megye />} />
             <Route path='*' element={<Navigate to={'/'} />} />
           </Routes>
