@@ -38,8 +38,9 @@ const megyetelepulesei=(req,res)=>{
         if(err){
             res.status(400).json(err);
         } else {
-            if(rows[0].telepulesnev!=null){
-                res.status(200).json(rows[0]);
+            if(rows.length>0){
+                
+                res.status(200).json(rows);
             } else {
                 res.status(400).json({message:"Nincs ilyen megye!"});
             }
@@ -50,5 +51,6 @@ const megyetelepulesei=(req,res)=>{
 }
 
 module.exports={
-    megyelista
+    megyelista,
+    megyetelepulesei
 }

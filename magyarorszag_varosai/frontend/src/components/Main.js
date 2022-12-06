@@ -45,7 +45,7 @@ function Main() {
             </p>
           </Link>
 
-          <a
+          <Link to='/megye'
             className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
             href="/services/digital-campaigns"
           >
@@ -71,7 +71,7 @@ function Main() {
             <p className="mt-1 text-sm text-gray-300">
               Az egyes megyékhez tartozó települések listája, adatai.
             </p>
-          </a>
+          </Link>
 
           <a
             className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
