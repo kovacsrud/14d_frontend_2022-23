@@ -73,9 +73,9 @@ function Main() {
             </p>
           </Link>
 
-          <a
+          <Link to='/tipus'
             className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
-            href="/services/digital-campaigns"
+            
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +99,7 @@ function Main() {
             <p className="mt-1 text-sm text-gray-300">
               Magyarország települései típus szerinti bontásban.
             </p>
-          </a>
+          </Link>
 
                  
           
