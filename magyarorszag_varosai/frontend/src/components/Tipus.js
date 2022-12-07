@@ -18,7 +18,7 @@ function Tipus() {
             <h3 className="mt-4 my-6 text-xl text-center font-bold text-white">Település jogállások</h3>            
             <ul>
                 {
-                    jogallasok.map((elem,index)=>(<li className="my-2" key={index}><Link to='/jogallastelepules' state={{elem}}>{elem.jogallas}</Link></li>))
+                    jogallasok.map((elem,index)=>(<li className="my-2" key={index}><Link to='/jogallastelepules' state={elem}>{elem.jogallas}</Link></li>))
                 }
             </ul>
           </div>  

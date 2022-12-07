@@ -8,8 +8,10 @@ function JogallasTelepules() {
     const{setKivalasztottJogallas,jogallasTelepulesek}=useContext(TipusContext);
     let jogallas="";
     const {state}=useLocation();
+    console.log(state);    
     if(state)  {
         jogallas=state.jogallas;
+        console.log(jogallas);
         setKivalasztottJogallas(jogallas);
     }
   return (
@@ -24,7 +26,7 @@ function JogallasTelepules() {
             <h3 className="mt-4 my-6 text-xl text-center font-bold text-white">Település típus:{jogallas}</h3>            
             <ul>
                 {
-                    jogallasTelepulesek.map((elem,index)=>(<li className="my-2" key={index}>{elem.telepulesnev}</li>))
+                    jogallasTelepulesek.map((elem,index)=>(<li className="my-2" key={index}><Link to='/telepulesadat' state={{telepules:elem.telepulesnev}}>{elem.telepulesnev}</Link></li>))
                 }
             </ul>
           </div>  
