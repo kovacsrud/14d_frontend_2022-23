@@ -4,6 +4,15 @@ const TelepulesContext=createContext();
 
 export const TelepulesProvider=({children})=>{
     const[telepulesnevek,setTelepulesNevek]=useState([]);
+    const [selectedTelepules,setSelectedTelepules]=useState("");
+    const [telepules,setTelepules]=useState({});
+
+    useEffect(()=>{
+        fetch(`http://localhost:8000/api/telepulesek/telepulesnev/${selectedTelepules}`)
+        .then(res=>res.json())
+        .then(adat=>setTelepules(adat))
+        .catch(err=>console.log(err));
+    },[selectedTelepules]);
 
     useEffect(()=>{
         fetch('http://localhost:8000/api/telepulesek')
@@ -13,7 +22,13 @@ export const TelepulesProvider=({children})=>{
     },[]);
 
 
-    return <TelepulesContext.Provider value={{telepulesnevek}}>
+    return <TelepulesContext.Provider value={{
+        telepulesnevek,
+        telepules,
+        selectedTelepules,
+        setSelectedTelepules
+
+    }}>
                 {children}
             </TelepulesContext.Provider>
 }

@@ -5,20 +5,8 @@ import {Link} from 'react-router-dom';
 import Terkep from './Terkep';
 
 function Telepules() {
-    const {telepulesnevek}=useContext(TelepulesContext);
-    const [selectedTelepules,setSelectedTelepules]=useState("");
-    const [telepules,setTelepules]=useState({});
-
-    useEffect(()=>{
-        fetch(`http://localhost:8000/api/telepulesek/telepulesnev/${selectedTelepules}`)
-        .then(res=>res.json())
-        .then(adat=>setTelepules(adat))
-        .catch(err=>console.log(err));
-    },[selectedTelepules]);
-
-   
-  
-  
+    const {telepulesnevek,telepules,setSelectedTelepules,selectedTelepules}=useContext(TelepulesContext);
+    
 
   return (
   <section className="bg-gray-900 text-white">

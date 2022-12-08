@@ -4,8 +4,15 @@ import {Link} from 'react-router-dom';
 import Vissza from './Vissza';
 import TipusContext from '../context/TipusContext';
 
+
 function JogallasTelepules() {
     const{setKivalasztottJogallas,jogallasTelepulesek}=useContext(TipusContext);
+    
+
+    
+
+    
+
     let jogallas="";
     const {state}=useLocation();
     console.log(state);    
@@ -26,7 +33,7 @@ function JogallasTelepules() {
             <h3 className="mt-4 my-6 text-xl text-center font-bold text-white">Település típus:{jogallas}</h3>            
             <ul>
                 {
-                    jogallasTelepulesek.map((elem,index)=>(<li className="my-2" key={index}><Link to='/telepulesadat' state={{telepules:elem.telepulesnev}}>{elem.telepulesnev}</Link></li>))
+                    jogallasTelepulesek.map((elem,index)=>(<li className="my-2" key={index}><Link to='/telepulesadat' state={elem.telepulesnev}>{elem.telepulesnev}</Link></li>))
                 }
             </ul>
           </div>  

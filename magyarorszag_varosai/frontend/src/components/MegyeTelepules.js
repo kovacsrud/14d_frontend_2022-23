@@ -27,7 +27,7 @@ function MegyeTelepules() {
         {
           megyeTelepulesek.map((telepules,index)=>(
           <div className="basis-1/4 text-xl bg-gray-600 rounded text-center m-5 p-10 text-white">
-            <Link to='/telepulesadat' state={{telepules}}>{telepules.telepulesnev} {telepules.jogallas}</Link>
+            <Link to='/telepulesadat' state={telepules.telepulesnev}>{telepules.telepulesnev} {telepules.jogallas}</Link>
           </div>))
         }
         </div>
