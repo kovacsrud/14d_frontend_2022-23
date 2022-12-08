@@ -16,7 +16,7 @@ function App() {
       <TipusProvider>
       <MegyeProvider>
       <TelepulesProvider>
-        <Router>
+        <Router basename='/magyarorszag'>
           <Routes>
             <Route path='/' element={<Main />} />
             <Route path='/telepules' element={<Telepules />}/>

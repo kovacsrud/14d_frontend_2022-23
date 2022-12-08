@@ -3,6 +3,7 @@ import {useLocation} from 'react-router-dom';
 import MegyeContext from '../context/MegyeContext';
 import {Link} from 'react-router-dom';
 import Vissza from './Vissza';
+import {AiOutlinePlayCircle} from 'react-icons/ai';
 
 function MegyeTelepules() {
     const{setKivalasztottMegye,megyeTelepulesek}=useContext(MegyeContext);
@@ -23,13 +24,26 @@ function MegyeTelepules() {
           {megyenev} megye
         </h2>
         <Vissza />
-        <div className="flex flex-row flex-wrap bg-gray-900 items-center justify-center p-2">
+        <div className="m-5 bg-gray-800 text-left block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10">
+        <h3 className="mt-4 my-6 text-xl text-center font-bold text-white">{megyenev} megye települései</h3>
+        <ul>
         {
           megyeTelepulesek.map((telepules,index)=>(
-          <div className="basis-1/4 text-xl bg-gray-600 rounded text-center m-5 p-10 text-white">
-            <Link to='/telepulesadat' state={telepules.telepulesnev}>{telepules.telepulesnev} {telepules.jogallas}</Link>
-          </div>))
+            
+            
+          <li key={index}>
+            
+            <Link to='/telepulesadat' state={telepules.telepulesnev}>
+              <div className='flex flex-row items-center m-2'>
+                <AiOutlinePlayCircle color='#DB2777'  size={30}/>
+                <span className='mx-2'>{telepules.telepulesnev} {telepules.jogallas}</span>
+              </div>
+            </Link>
+            
+          </li>
+          ))
         }
+        </ul>
         </div>
     </div>
     </div>

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import TipusContext from "../context/TipusContext";
 import Vissza from './Vissza';
 import {Link} from 'react-router-dom';
+import {AiOutlinePlayCircle} from 'react-icons/ai';
 
 function Tipus() {
   const { jogallasok } = useContext(TipusContext);
@@ -18,7 +19,15 @@ function Tipus() {
             <h3 className="mt-4 my-6 text-xl text-center font-bold text-white">Település jogállások</h3>            
             <ul>
                 {
-                    jogallasok.map((elem,index)=>(<li className="my-2" key={index}><Link to='/jogallastelepules' state={elem}>{elem.jogallas}</Link></li>))
+                    jogallasok.map((elem,index)=>(
+                    <li className="my-2" key={index}>
+                      <Link to='/jogallastelepules' state={elem}>
+                        <div className='flex flex-row items-center m-2'>
+                        <AiOutlinePlayCircle color='#DB2777'  size={30}/>
+                        <span className='mx-2'>{elem.jogallas}</span>
+                        </div>
+                      </Link>
+                    </li>))
                 }
             </ul>
           </div>  

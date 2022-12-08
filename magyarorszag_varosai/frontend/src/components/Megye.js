@@ -1,7 +1,7 @@
 import {useContext} from 'react';
 import {Link} from 'react-router-dom';
 import MegyeContext from '../context/MegyeContext';
-import NavButton from './NavButton';
+import {AiOutlinePlayCircle} from 'react-icons/ai';
 
 function Megye() {
     const{megyek}=useContext(MegyeContext);
@@ -33,12 +33,24 @@ function Megye() {
             </svg>
           </Link>
         </div>
-        <div className='mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2'>
+        <div className='m-5 bg-gray-800 text-left block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10'>
+        <h3 className="mt-4 my-6 text-xl text-center font-bold text-white">Megyék</h3>
+        <ul>
         {
-            megyek.map((elem,index)=>(<NavButton key={index} megyenev={elem.megyenev}/>))
+            //megyek.map((elem,index)=>(<NavButton key={index} megyenev={elem.megyenev}/>))
+            megyek.map((elem,index)=>(
+            <li key={index} megyenev={elem.megyenev}>
+              <Link to='/megyetelepules' state={{"megyenev":elem.megyenev}}>
+              <div className='flex flex-row items-center m-2'>
+                <AiOutlinePlayCircle color='#DB2777'  size={30}/>
+                <span className='mx-2'>{elem.megyenev}</span>
+                </div>
+              </Link>
+            </li>))
         }
+        </ul>
         </div>
-        <Link to='/'>Főoldal</Link>
+        
        </div>
       </div>
     </section>

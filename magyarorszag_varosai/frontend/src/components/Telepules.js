@@ -1,4 +1,4 @@
-import {useState,useContext,useEffect} from 'react';
+import {useContext} from 'react';
 import TelepulesContext from '../context/TelepulesContext';
 import {Link} from 'react-router-dom';
 

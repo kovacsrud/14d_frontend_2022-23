@@ -3,6 +3,7 @@ import {useLocation} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import Vissza from './Vissza';
 import TipusContext from '../context/TipusContext';
+import {AiOutlinePlayCircle} from 'react-icons/ai';
 
 
 function JogallasTelepules() {
@@ -33,7 +34,15 @@ function JogallasTelepules() {
             <h3 className="mt-4 my-6 text-xl text-center font-bold text-white">Település típus:{jogallas}</h3>            
             <ul>
                 {
-                    jogallasTelepulesek.map((elem,index)=>(<li className="my-2" key={index}><Link to='/telepulesadat' state={elem.telepulesnev}>{elem.telepulesnev}</Link></li>))
+                    jogallasTelepulesek.map((elem,index)=>(
+                    <li className="my-2" key={index}>
+                      <Link to='/telepulesadat' state={elem.telepulesnev}>
+                      <div className='flex flex-row items-center m-2'>
+                        <AiOutlinePlayCircle color='#DB2777'  size={30}/>
+                        <span className='mx-2'>{elem.telepulesnev}</span>
+                        </div>
+                        </Link>
+                      </li>))
                 }
             </ul>
           </div>  
