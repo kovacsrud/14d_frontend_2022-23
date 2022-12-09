@@ -1,5 +1,11 @@
-import mapboxgl from 'mapbox-gl';
+//import mapboxgl from 'mapbox-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
+
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'; 
+
+
 import {useEffect} from 'react';
 
 function Terkep(props) {
@@ -7,6 +13,7 @@ function Terkep(props) {
     mapboxgl.accessToken="pk.eyJ1Ijoic3phamJlcnBpcmF0eSIsImEiOiJja3drd25vbTAxd2YyMnBuc3IxenhqMHNvIn0.c55V1Z3GlPscRZjxsWZYrQ";
     useEffect(()=>{
       if(lng && lat){
+      mapboxgl.workerClass = MapboxWorker; 
       let map=new mapboxgl.Map(
         {
           container:"mapContainer",

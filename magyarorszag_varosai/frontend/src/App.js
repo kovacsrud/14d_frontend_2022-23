@@ -10,6 +10,7 @@ import TelepulesAdat from './components/TelepulesAdat';
 import Tipus from './components/Tipus';
 import JogallasTelepules from './components/JogallasTelepules';
 
+
 function App() {
   return (
     <div className="bg-gray-900 h-screen">
