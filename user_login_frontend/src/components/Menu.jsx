@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 
 function Menu() {
+    const token=sessionStorage.getItem('usertoken');
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -9,9 +10,22 @@ function Menu() {
                 </div>
                 <div className="flex-none">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Felhasználó adatai</a></li>
-                        <li><Link to='/register'>Regisztráció</Link></li>
-                        <li><Link to='/login'>Login</Link></li>
+                        {
+                            token ? 
+                            (
+                            <>
+                                 <li><a>Felhasználó adatai</a></li>
+                            </>
+                            ):
+                            (
+                            <>
+                               <li><Link to='/register'>Regisztráció</Link></li>
+                               <li><Link to='/login'>Login</Link></li>
+                            </>
+                            )
+                        }
+                       
+                       
                     </ul>
                 </div>
             </div>
