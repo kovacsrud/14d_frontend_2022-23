@@ -19,6 +19,7 @@ function Register() {
   const onSubmit = (e) => {
     e.preventDefault();
     kuldes(formData,'POST');
+    navigate('/');
   }
   
   let formObj={};
