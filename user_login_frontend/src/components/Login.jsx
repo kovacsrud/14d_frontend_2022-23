@@ -12,10 +12,10 @@ function Login() {
     })
     .then(res=>res.json())
     .then(token=>sessionStorage.setItem('usertoken',token))
-    .catch(err=>console.log(err));
+    .catch(err=>alert(err));
   }
 
-  
+    
 
   const onSubmit = (e) => {
         e.preventDefault();   
