@@ -1,6 +1,10 @@
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
+import UserContext from "./context/UserContext";
+import {useContext} from "react";
 
 function Menu() {
+    const {refresh,logout}=useContext(UserContext);
+    const navigate=useNavigate();
     const token=sessionStorage.getItem('usertoken');
     return (
         <div>
@@ -14,7 +18,8 @@ function Menu() {
                             token ? 
                             (
                             <>
-                                 <li><a>Felhasználó adatai</a></li>
+                                 <li><Link to="/userdata">Felhasználó adatai</Link></li>
+                                 <li><a onClick={()=>{logout();navigate('/')}}>Logout</a></li>
                             </>
                             ):
                             (

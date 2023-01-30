@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 function Register() {
 
@@ -12,14 +13,24 @@ function Register() {
       body:JSON.stringify(formData)
     })
     .then(res=>res.json())
-    .then(token=>sessionStorage.setItem('usertoken',token))
-    .catch(err=>console.log(err));
+    .then(token=>{
+      if(!token.message){
+        sessionStorage.setItem('usertoken',token);
+        toast.success("Sikeres regisztráció!",{position: toast.POSITION.BOTTOM_RIGHT})
+        navigate('/');
+      } else {
+        toast.error(token.message,{position: toast.POSITION.BOTTOM_RIGHT});
+        //alert(token.message);
+      }
+      
+    })
+    .catch(err=>toast.error(err),{position: toast.POSITION.BOTTOM_RIGHT});
   }
 
   const onSubmit = (e) => {
     e.preventDefault();
     kuldes(formData,'POST');
-    navigate('/');
+    
   }
   
   let formObj={};

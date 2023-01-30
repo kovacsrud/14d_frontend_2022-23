@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import {useNavigate} from "react-router-dom";
+import UserContext from "./context/UserContext";
+import {toast} from "react-toastify";
 
 function Login() {
   const navigate=useNavigate();
+  const {update}=useContext(UserContext);
 
   const kuldes=(formData,method)=>{
     fetch('http://localhost:8000/api/user/login',{
@@ -11,8 +14,18 @@ function Login() {
       body:JSON.stringify(formData)
     })
     .then(res=>res.json())
-    .then(token=>sessionStorage.setItem('usertoken',token))
-    .catch(err=>alert(err));
+    .then(token=>{
+      if(!token.message){
+        sessionStorage.setItem('usertoken',token);
+        toast.success("Sikeres belépés!",{position: toast.POSITION.BOTTOM_RIGHT})
+        update();
+        navigate('/');
+      } else {
+        toast.error(token.message,{position: toast.POSITION.BOTTOM_RIGHT});
+        //alert(token.message);
+      }
+    })
+    .catch(err=>toast.error(err,{position: toast.POSITION.BOTTOM_RIGHT}));
   }
 
     
@@ -20,7 +33,7 @@ function Login() {
   const onSubmit = (e) => {
         e.preventDefault();   
         kuldes(formData,'POST');
-        navigate('/');
+       // navigate('/');
   }
 
   let formObj={};
