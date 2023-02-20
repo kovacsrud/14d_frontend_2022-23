@@ -4,6 +4,7 @@ import Main from "./components/Main";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Userdata from "./components/Userdata";
+import Fileupload from "./components/Fileupload";
 import { UserProvider } from "./components/context/UserContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/userdata" element={<Userdata />} />
+          <Route path="/upload" element={<Fileupload />} />
           <Route path="*" element={<Navigate to={"/"} />} />
         </Routes>
       </Router>
