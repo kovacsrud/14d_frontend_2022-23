@@ -18,6 +18,7 @@ function Menu() {
                             token ? 
                             (
                             <>
+                                 <li><Link to="/images">Feltöltött képek</Link></li>
                                  <li><Link to="/upload">Fájlok feltöltése</Link></li>
                                  <li><Link to="/userdata">Felhasználó adatai</Link></li>
                                  <li><a onClick={()=>{logout();navigate('/')}}>Logout</a></li>
