@@ -1,6 +1,9 @@
 const asyncHandler=require('express-async-handler');
 const mongoose=require('mongoose');
 const Image=require('../models/Image');
+const fs=require('fs');
+const {dirname}=require('path');
+const appDir=dirname(require.main.filename);
 
 const getImages=asyncHandler(async (req,res)=>{
 
@@ -14,4 +17,33 @@ const getImages=asyncHandler(async (req,res)=>{
 
 });
 
-module.exports={getImages};
+const deleteImage=asyncHandler(async (req,res)=>{
+    const {imageId}=req.body;
+    const image=await Image.findById(imageId);
+    
+    if(!image){
+        throw new Error("A kép nem törölhető!");
+    } else {
+        const path=appDir+"/files/"+req.user.username+"/";
+        
+        if(fs.existsSync(path+image.imageName)){
+            
+            try {
+                await Image.findOneAndRemove({userid:req.user._id,_id:imageId});
+                await fs.rm(path+image.imageName);
+                res.json({message:"Fájl törlése"});
+                
+            } catch (error) {
+                res.json({"error":error});
+            }
+            
+        }
+        
+
+    }
+
+    //res.json({message:"Kép törölve!"});
+
+});
+
+module.exports={getImages,deleteImage};
