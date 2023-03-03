@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {toast} from 'react-toastify';
 
 function Fileupload() {
     const navigate = useNavigate();
@@ -21,8 +22,8 @@ function Fileupload() {
             body:data
         })
         .then(res=>res.json())
-        .then(valasz=>alert(valasz.message))
-        .catch(err=>alert(err));
+        .then(valasz=>toast.success(valasz.message,{position: toast.POSITION.BOTTOM_RIGHT}))
+        .catch(err=>toast.error(err,{position: toast.POSITION.BOTTOM_RIGHT}));
     }
 
     const onSubmit = (e) => {
@@ -32,7 +33,7 @@ function Fileupload() {
             formData.append("file"+i,images[i])
         }
         sendAdat(formData);
-        navigate('/');
+        navigate('/images');
     }
 
     const imageChange=(e)=>{

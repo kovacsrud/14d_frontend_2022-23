@@ -7,6 +7,7 @@ import Userdata from "./components/Userdata";
 import Fileupload from "./components/Fileupload";
 import Images from "./components/Images";
 import { UserProvider } from "./components/context/UserContext";
+import { ImageProvider } from "./components/context/ImageContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="mx-10">
       <Header headerText={"User login frontend"} />
+      <ImageProvider>
       <UserProvider>
       <Router>
       <Menu />
@@ -32,6 +34,7 @@ function App() {
         </Routes>
       </Router>
       </UserProvider>
+      </ImageProvider>
       <ToastContainer />
       
       

@@ -30,7 +30,7 @@ const deleteImage=asyncHandler(async (req,res)=>{
             
             try {
                 await Image.findOneAndRemove({userid:req.user._id,_id:imageId});
-                await fs.rm(path+image.imageName);
+                await fs.rm(path+image.imageName,()=>{console.log("Törlés:"+imageId)});
                 res.json({message:"Fájl törlése"});
                 
             } catch (error) {

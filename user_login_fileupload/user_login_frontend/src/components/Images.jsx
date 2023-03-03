@@ -1,10 +1,12 @@
-import {useState,useEffect} from 'react';
+import {useState,useEffect,useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import ImageCaroussel from './ImageCaroussel';
 import ImageCards from './ImageCards';
+import ImageContext from './context/ImageContext';
 
 function Images() {
+    const{refresh}=useContext(ImageContext);
     const [images,setImages]=useState({});
     const token=sessionStorage.getItem('usertoken');
     const navigate=useNavigate();
@@ -27,7 +29,7 @@ function Images() {
         }
 
 
-    },[])
+    },[refresh])
 
 
   return (
