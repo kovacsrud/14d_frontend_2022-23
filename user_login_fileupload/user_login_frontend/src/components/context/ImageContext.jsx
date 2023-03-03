@@ -12,7 +12,7 @@ export const ImageProvider=({children})=>{
     }
 
     const imgDelete=(imageId)=>{
-        
+        console.log("Delete func:"+imageId);
         fetch('http://localhost:8000/api/images',{
             method:'DELETE',
             headers:{

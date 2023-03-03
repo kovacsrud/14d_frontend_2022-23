@@ -9,13 +9,13 @@ function ImageCards({imagedata}) {
         
         {
 
-         images.map((image)=>(<div className="static w-96 card card-side bg-base-300 m-5 shadow-xl">
+         images.map((image,index)=>(<div key={index} className="static w-96 card card-side bg-base-300 m-5 shadow-xl">
          <figure><img src={`http://localhost:8000${path}${image.imageName}`} alt={image.imageName}/></figure>
          <div className="card-body">
            <h2 className="card-title">{image.imageName}</h2>
            
            <div className="card-actions justify-end">
-           <Confirm3 imageId={image._id}/>
+           <Confirm imageId={image._id}/>
            </div>
          </div>
        </div>))   

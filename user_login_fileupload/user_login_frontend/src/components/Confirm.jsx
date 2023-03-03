@@ -14,7 +14,7 @@ function Confirm({imageId}) {
         <div className='flex justify-center items-center'>
         <div className='flex-column'>
             <p className='text-2xl m-2 text-center'>Biztosan törli?</p>
-            <button onClick={()=>{imgDelete(imageId);setOpen(false)}} className='btn btn-primary mx-5'>Törlés</button>
+            <button onClick={()=>{imgDelete(imageId);console.log(imageId);setOpen(false)}} className='btn btn-primary mx-5'>Törlés</button>
             <button onClick={()=>setOpen(false)} className='btn btn-secondary'>Mégse</button>
         </div>
         </div>
