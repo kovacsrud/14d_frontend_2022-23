@@ -22,9 +22,14 @@ const fileUpload=asyncHandler( async (req,res)=>{
              
 
         for(prop in req.files){
-            
+            console.log("Fájlok mappába írása");
             console.log(req.files[prop].name);
             console.log(appDir);
+            const image=await Image.findOne({imageName:req.files[prop].name});
+            if(image){
+                throw new Error(req.files[prop].name+" kép már lett feltöltve");
+            }
+
             await fs.writeFile(path+req.user.username+'/'+req.files[prop].name,req.files[prop].data,err=>{console.log(err)});
             try {
                 const ujImage=await Image.create({
@@ -32,7 +37,8 @@ const fileUpload=asyncHandler( async (req,res)=>{
                     imageName:req.files[prop].name
                 });
             } catch (error) {
-                throw new Error("Lett már "+req.files[prop].name+" feltöltve!");
+                throw new Error(error);
+                //throw new Error("Lett már "+req.files[prop].name+" feltöltve!");
             }
         }
     }

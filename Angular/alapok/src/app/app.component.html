@@ -1,0 +1,19 @@
+<h1 class="text-3xl text-center font-bold">Angular alapok</h1>
+<app-header [ertek]="333" [headerText]="'Angular input'"></app-header>
+<h2 class="text-xl m-5 text-center font-bold">{{alcim}}</h2>
+<p class="text-center">{{szam}}</p>
+<app-kibocsato (outputText)="kibocsatoUzenet($event)"></app-kibocsato>
+<p class="text-center">Elkapott Output:{{uzenet}}</p>
+<ng-container *ngIf="lista.length>0; else ureslista">
+  <ng-container  *ngFor="let elem of lista;let i=index">
+    <p class="text-center">{{i+1}}.{{elem}}</p>
+  </ng-container>
+</ng-container>
+
+<app-users></app-users>
+
+<ng-template #ureslista>
+  <h3>Üres a lista!</h3>
+</ng-template>
+
+<router-outlet></router-outlet>

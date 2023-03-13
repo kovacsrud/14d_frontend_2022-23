@@ -1,0 +1,37 @@
+<h3 class="text-2xl text-center">Felhasználók:</h3>
+
+<div class="grid grid-cols-2 justify-items-center">
+<ng-container  *ngIf="users.length>0;else ureslista">
+    <ng-container  *ngFor="let user of users">
+        
+        <div class="card m-2 p-2 card-compact w-96 bg-sky-300 shadow-xl">
+            <figure><img src={{user.picture.large}} /></figure>
+            <div class="card-body">
+              <h2 class="card-title">{{user.name.title}} {{user.name.first}} {{user.name.last}}</h2>
+              <ul class="text-xl font-bold">
+                <li>City:
+                    <ul>
+                        <li class="indent-6">{{user.location.city}}</li>
+                    </ul>
+                </li>
+                <li>Street:
+                    <ul>
+                        <li class="indent-6">{{user.location.street.name}} {{user.location.street.number}}</li>
+                    </ul>
+                </li>
+              </ul>
+              <div class="card-actions justify-end">
+                
+              </div>
+            </div>
+          </div>
+        
+        
+    </ng-container>
+</ng-container>
+</div>
+
+
+<ng-template #ureslista>
+    <h3 class="text-2xl text-center">A lista üres!</h3>
+</ng-template>
